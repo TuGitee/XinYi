@@ -1,24 +1,21 @@
-# psychology
+# 心翼项目
 
-## Project setup
+## 项目运行
+
+### 安装依赖
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 开发编译与热重载
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 打包到生产环境
 ```
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### dist
+dist 文件夹下是打包好的文件，启动serve或搭建express即可启动项目。
