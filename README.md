@@ -17,5 +17,4 @@ npm run serve
 npm run build
 ```
 
-### dist
-dist 文件夹下是打包好的文件，启动serve或搭建express即可启动项目。
+#### 西南大学心理学 && 电子科技大学软件工程
