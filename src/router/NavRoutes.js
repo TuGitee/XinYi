@@ -1,16 +1,8 @@
-import IllnessAnalysis from '@/pages/IllnessAnalysis'
-import NormalIllness from '@/pages/NormalIllness'
-import SearchIllness from '@/pages/SearchIllness'
-import PsychologyConsult from '@/pages/PsychologyConsult'
-import FunctionIntroduction from '@/pages/FunctionIntroduction'
-import AboutUs from '@/pages/AboutUs'
-import PsychologyKnowledge from '@/pages/PsychologyKnowledge'
-
 export default [
     {
         name: 'IllnessAnalysis',
         path: '/illness-analysis',
-        component: IllnessAnalysis,
+        component: () => import('@/pages/IllnessAnalysis'),
         meta: {
             title: '心理诊断',
             isNavShow: true,
@@ -22,7 +14,7 @@ export default [
     {
         name: 'NormalIllness',
         path: '/normal-illness',
-        component: NormalIllness,
+        component: () => import('@/pages/NormalIllness'),
         meta: {
             title: '常见疾病',
             isNavShow: true,
@@ -33,7 +25,7 @@ export default [
     {
         name: 'SearchIllness',
         path: '/search-illness',
-        component: SearchIllness,
+        component: () => import('@/pages/SearchIllness'),
         meta: {
             title: '搜索疾病',
             isNavShow: true,
@@ -44,7 +36,7 @@ export default [
     {
         name: 'PsychologyConsult',
         path: '/psychology-consult',
-        component: PsychologyConsult,
+        component: () => import('@/pages/PsychologyConsult'),
         meta: {
             title: '心理咨询',
             isNavShow: true,
@@ -55,7 +47,7 @@ export default [
     {
         name: 'FunctionIntroduction',
         path: '/function-introduction',
-        component: FunctionIntroduction,
+        component: () => import('@/pages/FunctionIntroduction'),
         meta: {
             title: '功能介绍',
             isNavShow: true,
@@ -65,7 +57,7 @@ export default [
     }, {
         name: 'AboutUs',
         path: '/about-us',
-        component: AboutUs,
+        component: () => import('@/pages/AboutUs'),
         meta: {
             title: '关于我们',
             isNavShow: true,
@@ -75,7 +67,7 @@ export default [
     }, {
         name: 'PsychologyKnowledge',
         path: '/psychology-knowledge',
-        component: PsychologyKnowledge,
+        component: () => import('@/pages/PsychologyKnowledge'),
         meta: {
             title: '心理小知识',
             isNavShow: true,
