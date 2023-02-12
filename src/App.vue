@@ -44,6 +44,8 @@ export default {
   transition: all 0.5s;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+  text-size-adjust: none;
+
   &::-moz-selection {
     background: transparent;
     color: @color;
@@ -90,7 +92,8 @@ export default {
       top: calc(240px + env(safe-area-inset-top));
     }
 
-    padding: 20px constant(safe-area-inset-left) 20px constant(safe-area-inset-right);
+    padding: 20px constant(safe-area-inset-left) 20px
+      constant(safe-area-inset-right);
     padding: 20px env(safe-area-inset-left) 20px env(safe-area-inset-right);
   }
 

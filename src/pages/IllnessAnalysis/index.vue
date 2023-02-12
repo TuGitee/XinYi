@@ -145,8 +145,8 @@ export default {
     }
     &__tip {
       width: 100%;
-      line-height: 26px;
-      font-size: 14px;
+      line-height: 1.6;
+      font-size: 16px;
       color: @font-color-light;
     }
     &__content {
@@ -279,22 +279,20 @@ export default {
         &__left {
           height: 100%;
           line-height: 30px;
-          font-size: 16px;
+          font-size: 20px;
           font-weight: bold;
           color: @font-color;
         }
         &__right {
           height: 100%;
-          line-height: 30px;
+          line-height: 20px;
           font-size: 16px;
           color: @color;
         }
       }
       &__tips {
-        width: 100%;
-        height: 100%;
-        line-height: 26px;
         font-size: 14px;
+        line-height: 2;
         color: @font-color-light;
       }
       &__content {

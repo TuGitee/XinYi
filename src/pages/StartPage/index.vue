@@ -5,11 +5,17 @@
         v-for="index in 3"
         :key="index"
         class="start-page-carousel-item"
-        :class="{ active: index === activeIndex }"
+        :class="{ active: index === activeIndex+1 }"
       >
         <img
-          :src="require(`./images/start${index}.png`)"
+          :src="require(`./images/start${index}_pc.png`)"
           :alt="`start${index}`"
+          class="start-page-carousel-item-pc"
+        />
+        <img
+          :src="require(`./images/start${index}_mobile.png`)"
+          :alt="`start${index}`"
+          class="start-page-carousel-item-mobile"
         />
       </div>
     </div>
@@ -34,9 +40,10 @@ export default {
   mounted() {
     this.$refs.carousel.style.left = 0;
     this.timer = setInterval(() => {
+      this.activeIndex++;
       this.$refs.carousel.style.left =
         parseInt(this.$refs.carousel.style.left) - 100 + "vw";
-      this.activeIndex++;
+
       if (
         parseInt(this.$refs.carousel.style.left) <=
         this.$refs.carousel.children.length * 100 * -1
@@ -65,20 +72,29 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    transition: all 1s;
     &-item {
       width: 100%;
       height: 100%;
+      opacity: 0;
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
+      @media (max-width: 480px) {
+        &-pc {
+          display: none;
+        }
+      }
+      @media (min-width: 480px) {
+        &-mobile {
+          display: none;
+        }
+      }
     }
   }
   .active {
-    transition: all 0.5s;
-    opacity: 0;
+    opacity: 1;
   }
   &-skip {
     position: absolute;

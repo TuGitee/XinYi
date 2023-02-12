@@ -66,7 +66,6 @@ export default {
       text-overflow: ellipsis;
       white-space: nowrap;
       max-width: 500px;
-
     }
     &-info {
       display: flex;
@@ -97,6 +96,7 @@ export default {
     /deep/ &-item {
       text-align: left;
       text-indent: 2em;
+      line-height: 1.5;
       font-size: 16px;
       color: @font-color;
       margin-bottom: 14px;

@@ -2,8 +2,7 @@
   <div class="psychology-consult">
     <h3 class="psychology-consult-title">心理咨询</h3>
     <div class="psychology-consult-coding">
-      <p>功能正在开发中...</p>
-      <p>敬请期待</p>
+      <p>功能正在开发中... 敬请期待！</p>
     </div>
     <div class="psychology-consult-error">
       <p>请先使用其他功能</p>
@@ -35,10 +34,13 @@ export default {};
     margin: 10px auto 40px;
     border-radius: 10px;
     user-select: none;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
   }
   &-coding {
-    margin-top: 80px;
-    line-height: 1.5;
+    margin-top: 70px;
+    line-height: 1.3;
     font-weight: bold;
     letter-spacing: 3px;
     font-size: 20px;
@@ -53,7 +55,7 @@ export default {};
   }
   &-error {
     margin-top: 80px;
-    line-height: 1.5;
+    line-height: 1.3;
     letter-spacing: 3px;
     font-size: 16px;
     color: @grey-dark;
