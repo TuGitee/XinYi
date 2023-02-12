@@ -90,7 +90,8 @@ export default {
       top: calc(240px + env(safe-area-inset-top));
     }
 
-    padding: 20px 0;
+    padding: 20px constant(safe-area-inset-left) 20px constant(safe-area-inset-right);
+    padding: 20px env(safe-area-inset-left) 20px env(safe-area-inset-right);
   }
 
   ::-webkit-scrollbar {

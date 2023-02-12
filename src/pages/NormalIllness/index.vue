@@ -37,7 +37,11 @@ export default {
 <style lang="less" scoped>
 .normal-illness {
   padding: 20px;
+  width: 80%;
   margin: 0 auto;
+  @media (max-width: 480px) {
+    padding: 20px 0;
+  }
   &-title {
     width: fit-content;
     padding: 0 20px;

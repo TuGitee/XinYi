@@ -52,7 +52,7 @@ export default {
 
 <style lang="less" scoped>
 .about-us {
-  width: 70%;
+  width: 80%;
   min-width: min-content;
   margin: auto;
   height: 100%;

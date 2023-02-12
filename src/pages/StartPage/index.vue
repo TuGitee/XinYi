@@ -82,7 +82,8 @@ export default {
   }
   &-skip {
     position: absolute;
-    top: 10px;
+    top: calc(constant(safe-area-inset-top) + 10px);
+    top: calc(env(safe-area-inset-top) + 10px);
     right: 10px;
     width: 60px;
     height: 30px;

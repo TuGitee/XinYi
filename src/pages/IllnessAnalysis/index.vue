@@ -126,9 +126,10 @@ export default {
   width: 100%;
   height: 100%;
   &__header {
-    width: 100%;
+    width: 90%;
     height: 100%;
     padding: 0 20px;
+    margin: auto;
     &__title {
       width: fit-content;
       padding: 0 20px;
@@ -260,7 +261,7 @@ export default {
   }
 
   &__footer {
-    width: 70%;
+    width: 80%;
     min-width: min-content;
     margin: auto;
     height: 100%;

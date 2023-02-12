@@ -33,9 +33,16 @@ export default {
 
 <style lang="less" scoped>
 .function-introduction {
-  padding: 20px 60px;
+  padding: 20px;
   width: 80%;
   margin: auto;
+
+  @media (min-width: 1080px) {
+    padding: 20px 60px;
+  }
+  @media (max-width: 480px) {
+    width: 90%;
+  }
   &-title {
     width: fit-content;
     padding: 0 20px;

@@ -34,8 +34,8 @@ export default {
   width: 80%;
   margin: auto;
   min-width: min-content;
-  @media screen and (min-width: 864px) {
-    width: 70%;
+  @media (max-width: 480px) {
+    padding: 30px 0;
   }
 }
 </style>

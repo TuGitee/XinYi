@@ -135,7 +135,6 @@ export default {
     }
     &-tips {
       margin: 30px auto;
-      width: 80%;
       height: 100%;
       text-align: center;
     }
