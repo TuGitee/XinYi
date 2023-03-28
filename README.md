@@ -16,5 +16,3 @@ npm run serve
 ```
 npm run build
 ```
-
-> 西南大学心理学 && 电子科技大学软件工程
