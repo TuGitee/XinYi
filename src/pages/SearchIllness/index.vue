@@ -42,7 +42,7 @@
           </li>
         </ul>
       </div>
-      <hr v-if="maybeList.length" class="search-illness-header-hr" />
+      <hr v-if="historyList.length && maybeList.length" class="search-illness-header-hr" />
       <div class="search-illness-header-history" v-if="historyList.length">
         <div class="search-illness-header-history-title"><b>历史搜索</b></div>
         <ul
@@ -68,16 +68,8 @@
         </ul>
       </div>
     </div>
-    <div class="search-illness-content">
+    <div class="search-illness-content" v-if="historyList.length !== 0">
       <div class="search-illness-content-visit">
-        <div class="search-illness-content-visit-title">浏览历史</div>
-        <button
-          class="search-illness-content-visit-clearall"
-          @click="clearAll"
-          v-if="historyList.length !== 0"
-        >
-          点击清空所有历史记录
-        </button>
         <ul class="search-illness-content-visit-list">
           <VisitItem
             v-for="(item, index) in historyList"
@@ -85,13 +77,13 @@
             :index="index"
             :key="item.id"
           ></VisitItem>
-          <li
-            class="search-illness-content-visit-list-warning"
-            v-if="historyList.length === 0"
-          >
-            暂无历史记录
-          </li>
         </ul>
+        <!-- <button
+          class="search-illness-content-visit-clearall"
+          @click="clearAll"
+        >
+          点击清空所有历史记录
+        </button> -->
       </div>
     </div>
   </div>
@@ -166,6 +158,7 @@ export default {
       this.historyList.splice(index, 1);
       localStorage.setItem("historyList", JSON.stringify(this.historyList));
     });
+    this.handleSearch();
   },
 };
 </script>
@@ -174,8 +167,8 @@ export default {
 .search-illness {
   margin: 0 auto;
   &-header {
-    width: 85%;
-    margin: 0 auto 100px;
+    width: 80%;
+    margin: 0 auto;
     min-width: min-content;
     &-image {
       width: 200px;
@@ -279,7 +272,7 @@ export default {
   }
   &-content {
     padding: 10px;
-    width: 85%;
+    width: 80%;
     margin: auto;
     &-visit {
       &-title {
