@@ -45,6 +45,7 @@ export default {
   box-shadow: 0px 2px 20px -10px @color-dark;
   transition: all 0.5s;
   min-width: fit-content;
+  background-color: white;
 
   &:hover {
     transform: scale(1.03);

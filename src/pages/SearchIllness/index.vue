@@ -43,7 +43,7 @@
         </ul>
       </div>
       <hr v-if="maybeList.length" class="search-illness-header-hr" />
-      <div class="search-illness-header-history">
+      <div class="search-illness-header-history" v-if="historyList.length">
         <div class="search-illness-header-history-title"><b>历史搜索</b></div>
         <ul
           class="search-illness-header-history-list"
@@ -123,7 +123,7 @@ export default {
   },
   methods: {
     handleSearch() {
-      const {illnessList}  = this
+      const illnessList = JSON.parse(JSON.stringify(this.illnessList));
       if (this.isSearch) {
         this.isSearch = false;
         setTimeout(() => {
@@ -174,7 +174,7 @@ export default {
 .search-illness {
   margin: 0 auto;
   &-header {
-    width: 70%;
+    width: 85%;
     margin: 0 auto 100px;
     min-width: min-content;
     &-image {
@@ -253,10 +253,11 @@ export default {
         flex-wrap: wrap;
         line-height: 2;
         &-item {
+          flex: 1;
           margin: 5px;
           font-size: 14px;
           color: #666;
-          padding: 5px 10px;
+          padding: 6px 16px;
           border-radius: 10px;
           background-color: @color-light;
           &-link {
@@ -278,9 +279,8 @@ export default {
   }
   &-content {
     padding: 10px;
-    width: 70%;
+    width: 85%;
     margin: auto;
-    min-width: min-content;
     &-visit {
       &-title {
         position: relative;
@@ -339,7 +339,19 @@ export default {
   @media screen and(max-width: 618px) {
     &-header,
     &-content {
-      width: 80%;
+      width: 100%;
+    }
+
+    &-header {
+      &-maybe,
+      &-history {
+        flex-direction: column;
+        margin: auto;
+        &-title {
+          width: 100%;
+          padding: 20px;
+        }
+      }
     }
   }
 }

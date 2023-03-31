@@ -60,26 +60,20 @@
           >
             <div class="illness-analysis__footer__item__content__item__left">
               <img
-                class="
-                  illness-analysis__footer__item__content__item__left__image
-                "
+                class="illness-analysis__footer__item__content__item__left__image"
                 :src="require(`@/assets/image/illness/illness_41.png`)"
                 alt=""
               />
             </div>
             <div class="illness-analysis__footer__item__content__item__middle">
               <div
-                class="
-                  illness-analysis__footer__item__content__item__middle__title
-                "
+                class="illness-analysis__footer__item__content__item__middle__title"
                 :title="link.title"
               >
                 {{ link.title }}
               </div>
               <div
-                class="
-                  illness-analysis__footer__item__content__item__middle__tip
-                "
+                class="illness-analysis__footer__item__content__item__middle__tip"
                 :title="link.intro"
               >
                 {{ link.intro }}
@@ -87,9 +81,7 @@
             </div>
             <div class="illness-analysis__footer__item__content__item__right">
               <a
-                class="
-                  illness-analysis__footer__item__content__item__right__button
-                "
+                class="illness-analysis__footer__item__content__item__right__button"
                 :href="link.url"
                 target="_blank"
                 >前往</a
@@ -170,6 +162,8 @@ export default {
         border-radius: 10px;
         position: relative;
         overflow: hidden;
+        background-color: white;
+        box-shadow: 0px 2px 15px -10px @color;
 
         @keyframes rotate {
           0% {
@@ -266,11 +260,17 @@ export default {
     margin: auto;
     height: 100%;
     padding: 0 20px;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      padding: 0;
+    }
     &__item {
       width: 100%;
       height: 100%;
       padding: 20px 15px;
       text-align: left;
+      
       &__title {
         width: 100%;
         color: @font-color;
@@ -303,16 +303,20 @@ export default {
         justify-content: space-between;
         flex-wrap: wrap;
         align-content: center;
+
         &__item {
           flex: 40%;
           margin: 10px 20px;
-          min-width: 280px;
           width: 100%;
           height: 100%;
+          padding: 20px;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
+          border-radius: 10px;
+          background-color: white;
+          box-shadow: 0px 0px 15px -10px @color;
           &__left {
             &__image {
               width: 50px;

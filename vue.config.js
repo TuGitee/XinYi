@@ -4,6 +4,8 @@ module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false,
   publicPath: './',
+  outputDir: 'dist',
+  assetsDir: 'static',
   devServer: {
     port: 3000,
     open: true,

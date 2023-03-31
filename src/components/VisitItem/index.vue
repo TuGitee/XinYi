@@ -73,7 +73,6 @@ export default {
   display: flex;
   padding: 20px;
   padding-right: 0;
-  min-width: 300px;
   text-align: left;
   &-left {
     width: 80px;
@@ -98,7 +97,7 @@ export default {
       }
       &-delete {
         padding: 3px 7px;
-        margin: 8px;
+        margin: 8px 0 0 8px;
         border: 1px solid @color;
         border-radius: 10px;
         background-color: @white;
@@ -119,6 +118,12 @@ export default {
       font-size: 14px;
       color: #666;
       margin-top: 10px;
+      // 显示两行多余省略号
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
   }
 }

@@ -53,6 +53,7 @@ export default {
   border-radius: 20px;
   box-shadow: 0px 2px 20px -10px @color-dark;
   transition: all 0.5s;
+  background-color: white;
   &-header {
     width: 100%;
     display: flex;

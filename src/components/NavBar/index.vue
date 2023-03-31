@@ -27,18 +27,31 @@
         }}</router-link>
       </div>
     </div>
+    <CardItem v-if="isCardShow" @mask="handleShow" :item="item" />
   </div>
 </template>
 
 <script>
 import NavRoutes from "@/router/NavRoutes";
+import CardItem from "@/components/CardItem";
 export default {
   name: "NavBar",
   data() {
     return {
       NavRoutes,
       isMusicActive: false,
+      isCardShow: false,
+      timer: null,
+      item: {
+        title: "注意！",
+        content: [
+          "您即将访问后台系统，后台系统不对外开放，仅供内部人员使用，如非内部人员，请勿访问！",
+        ],
+      },
     };
+  },
+  components: {
+    CardItem,
   },
   methods: {
     handleMusic() {
@@ -50,8 +63,33 @@ export default {
         music.pause();
       }
     },
+    handleShow() {
+      clearTimeout(this.timer);
+      this.timer = null;
+      this.isCardShow = false;
+    },
   },
   mounted() {
+    let count = 0;
+    let timer = null;
+    document
+      .querySelector("a[href*='about-us']")
+      .addEventListener("click", () => {
+        count++;
+        if (count === 5) {
+          this.isCardShow = true;
+          count = 0;
+          this.timer = setTimeout(()=>{
+            this.isCardShow = false;
+            this.$router.push({ name: "Login" });
+          }, 3000)
+        }
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          count = 0;
+        }, 500);
+      });
+
     const music = document.querySelector(".music");
     if (music.paused) {
       this.isMusicActive = false;

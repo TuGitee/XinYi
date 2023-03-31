@@ -118,8 +118,8 @@ export default {
         border-radius: 50%;
         padding: 16px;
         box-sizing: content-box;
+        background-color: white;
         border: 2px dashed @color;
-        background-color: transparent;
         animation: rotate 30s linear infinite;
         object-fit: cover;
 

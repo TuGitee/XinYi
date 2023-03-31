@@ -5,7 +5,7 @@
         v-for="index in 3"
         :key="index"
         class="start-page-carousel-item"
-        :class="{ active: index === activeIndex+1 }"
+        :class="{ active: index === activeIndex + 1 }"
       >
         <img
           :src="require(`./images/start${index}_pc.png`)"
@@ -19,7 +19,9 @@
         />
       </div>
     </div>
-    <button class="start-page-skip" @click="goSkip">跳过</button>
+    <router-link to="/function-introduction">
+      <button class="start-page-skip">跳过</button>
+    </router-link>
   </div>
 </template>
 
@@ -31,13 +33,10 @@ export default {
       timer: null,
     };
   },
-  methods: {
-    goSkip() {
-      clearInterval(this.timer);
-      this.$router.push("/function-introduction");
-    },
-  },
   mounted() {
+    this.$router.afterEach(() => {
+      clearInterval(this.timer);
+    });
     this.$refs.carousel.style.left = 0;
     this.timer = setInterval(() => {
       this.activeIndex++;

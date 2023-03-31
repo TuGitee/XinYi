@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Background />
     <audio
       src="@/components/NavBar/music/toki.mp3"
       loop
@@ -16,11 +17,13 @@
 
 <script>
 import NavBar from "./components/NavBar";
+import Background from "./components/Background";
 import { mapState } from "vuex";
 export default {
   name: "App",
   components: {
     NavBar,
+    Background,
   },
   created() {
     this.getIllnessList();
@@ -74,7 +77,7 @@ export default {
     padding-left: env(safe-area-inset-left);
     padding-right: constant(safe-area-inset-right);
     padding-right: env(safe-area-inset-right);
-    width: 80%;
+    width: 90%;
     @media screen and (min-width: 948px) {
       top: calc(60px + constant(safe-area-inset-top));
       top: calc(60px + env(safe-area-inset-top));

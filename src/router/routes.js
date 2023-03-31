@@ -19,6 +19,16 @@ export default [
         }
     },
     {
+        name: 'Login',
+        path: '/login',
+        component: () => import('@/pages/Login'),
+    },
+    {
+        name: 'BackEnd',
+        path: '/backend',
+        component: () => import('@/pages/BackEnd'),
+    },
+    {
         path: '/*',
         component: () => import('@/pages/Error'),
     }

@@ -33,9 +33,9 @@ export default {
   padding: 30px;
   width: 80%;
   margin: auto;
-  min-width: min-content;
   @media (max-width: 480px) {
-    padding: 30px 0;
+    padding: 30px 20px;
+    width: 100%;
   }
 }
 </style>
