@@ -94,11 +94,11 @@ export default {
         content: "";
         display: inline-block;
         position: absolute;
-        width: 50px;
+        width: 20%;
         height: 2px;
         border-radius: 10px;
         background-color: @color-dark;
-        bottom: 0;
+        bottom: -1px;
         left: 0;
       }
     }
