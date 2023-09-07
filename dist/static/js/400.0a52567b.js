@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkpsychology"]=self["webpackChunkpsychology"]||[]).push([[400],{4400:function(n,u,l){l.r(u),l.d(u,{default:function(){return f}});var c=function(){var n=this,u=n._self._c;return u("div",[n._v(" BackEnd ")])},e=[],s={},t=s,r=l(1001),o=(0,r.Z)(t,c,e,!1,null,null,null),f=o.exports}}]);
+//# sourceMappingURL=400.0a52567b.js.map
