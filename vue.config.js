@@ -10,6 +10,9 @@ module.exports = defineConfig({
     port: 3000,
     open: true,
     hot: true,
+    proxy: {
+      
+    }
   },
   pluginOptions: {
     'style-resources-loader': {
