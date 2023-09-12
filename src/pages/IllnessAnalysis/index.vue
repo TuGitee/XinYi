@@ -91,6 +91,7 @@
         </div>
       </div>
     </div>
+    <div class="illness-analysis__chart" ref="chart"></div>
   </div>
 </template>
 
@@ -99,6 +100,11 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {};
+  },
+  methods: {
+    formatTime(time) {
+      return `${time.getMonth() + 1}-${time.getDate()}`;
+    },
   },
   computed: {
     ...mapGetters({
@@ -109,6 +115,95 @@ export default {
   mounted() {
     this.$store.state.analysis.analysisList.length === 0 &&
       this.$store.dispatch("getAnalysisList");
+    var xAxisData = [];
+    var data1 = [];
+    var data2 = [];
+    var data3 = [];
+    for (var i = 0; i < 100; i++) {
+      xAxisData.push(
+        this.formatTime(new Date(new Date() - (99 - i) * 24 * 3600 * 1000))
+      );
+      data1.push(
+        parseInt(Math.abs((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5))
+      );
+      data2.push(
+        parseInt(Math.abs((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5))
+      );
+      data3.push(parseInt((Math.sin(i / 5) + Math.cos(i / 5) + i / 6) * 5));
+    }
+    let option = {
+      title: {
+        text: "测试热度趋势",
+        bottom: "5%",
+        left: "center",
+      },
+      legend: {
+        data: ["抑郁症", "焦虑症", "综合测试"],
+      },
+      toolbox: {
+        feature: {
+          magicType: {
+            type: ["stack"],
+          },
+          saveAsImage: {
+            pixelRatio: 3,
+          },
+        },
+      },
+      tooltip: {},
+      xAxis: {
+        data: xAxisData,
+        splitLine: {
+          show: false,
+        },
+      },
+      yAxis: {},
+      series: [
+        {
+          name: "抑郁症",
+          type: "bar",
+          data: data1,
+          emphasis: {
+            focus: "series",
+          },
+          animationDelay: function (idx) {
+            return idx * 10;
+          },
+        },
+        {
+          name: "焦虑症",
+          type: "bar",
+          data: data2,
+          emphasis: {
+            focus: "series",
+          },
+          animationDelay: function (idx) {
+            return idx * 10 + 100;
+          },
+        },
+        {
+          name: "综合测试",
+          type: "bar",
+          data: data3,
+          emphasis: {
+            focus: "series",
+          },
+          animationDelay: function (idx) {
+            return idx * 10 + 100;
+          },
+        },
+      ],
+      animationEasing: "elasticOut",
+      animationDelayUpdate: function (idx) {
+        return idx * 5;
+      },
+    };
+    const chart = this.$echarts.init(this.$refs.chart);
+    chart.setOption(option);
+
+    window.addEventListener("resize", () => {
+      chart.resize();
+    });
   },
 };
 </script>
@@ -116,10 +211,8 @@ export default {
 <style lang="less" scoped>
 .illness-analysis {
   width: 100%;
-  height: 100%;
   &__header {
     width: 90%;
-    height: 100%;
     padding: 0 20px;
     margin: auto;
     &__title {
@@ -256,9 +349,7 @@ export default {
 
   &__footer {
     width: 80%;
-    min-width: min-content;
     margin: auto;
-    height: 100%;
     padding: 0 20px;
 
     @media screen and (max-width: 768px) {
@@ -270,7 +361,7 @@ export default {
       height: 100%;
       padding: 20px 15px;
       text-align: left;
-      
+
       &__title {
         width: 100%;
         color: @font-color;
@@ -306,8 +397,13 @@ export default {
 
         &__item {
           flex: 40%;
-          margin: 10px 20px;
-          width: 100%;
+          margin: 10px;
+          min-width: 400px;
+          @media screen and (max-width: 768px) {
+            width: 90%;
+            min-width: 90%;
+          }
+          width: 40%;
           height: 100%;
           padding: 20px;
           display: flex;
@@ -378,6 +474,25 @@ export default {
               border-radius: 8px;
             }
           }
+        }
+      }
+    }
+  }
+
+  &__chart {
+    width: 70%;
+    height: 500px;
+    margin: 20px auto;
+    padding-bottom: 20px;
+
+    @media screen and (max-width: 768px) {
+      width: 90%;
+      height: 300px;
+    }
+    /deep/ & > svg {
+      & > g {
+        & > text {
+          padding-top: 20px;
         }
       }
     }

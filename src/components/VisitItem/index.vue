@@ -27,8 +27,7 @@
           </button>
         </div>
       </router-link>
-      <div class="visit-item-content-content" v-html="introduction">
-      </div>
+      <div class="visit-item-content-content" v-html="introduction"></div>
     </div>
   </li>
 </template>
@@ -59,11 +58,11 @@ export default {
     fileNumber() {
       return random();
     },
-    introduction(){
+    introduction() {
       return typeof this.item.introduction === "string"
-      ? this.item.introduction
-      : this.item.introduction.join("<br>")
-    }
+        ? this.item.introduction
+        : this.item.introduction.join("<br>");
+    },
   },
 };
 </script>
@@ -118,7 +117,7 @@ export default {
       font-size: 14px;
       color: #666;
       margin-top: 10px;
-      // 显示两行多余省略号
+
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;

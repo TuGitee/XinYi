@@ -3,17 +3,10 @@ const path = require('path')
 module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false,
+  productionSourceMap: false,
   publicPath: './',
-  outputDir: 'dist',
+  outputDir: 'docs',
   assetsDir: 'static',
-  devServer: {
-    port: 3000,
-    open: true,
-    hot: true,
-    proxy: {
-      
-    }
-  },
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',

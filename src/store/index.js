@@ -1,6 +1,7 @@
 import illness from "./illness";
 import psychology from "./psychology";
 import analysis from "./analysis";
+import theme from "./theme";
 import Vuex from "vuex";
 import Vue from "vue";
 
@@ -10,6 +11,7 @@ export default new Vuex.Store({
     modules: {
         illness,
         psychology,
-        analysis
+        analysis,
+        theme
     }
 });

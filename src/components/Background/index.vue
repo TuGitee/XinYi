@@ -6,92 +6,74 @@
 
 <script>
 export default {
+  data() {
+    return {
+      audCtx: null,
+      source: null,
+      analyser: null,
+      bufferLength: null,
+      dataArray: null,
+      music: null,
+      canvas: null,
+      isInit: false,
+    };
+  },
+  computed: {
+    ctx() {
+      return this.canvas.getContext("2d");
+    },
+  },
+  methods: {
+    draw() {
+      requestAnimationFrame(this.draw);
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      const bufferLength = this.analyser.frequencyBinCount / 2.5;
+      const dataArray = new Uint8Array(bufferLength);
+
+      const barWidth = (this.canvas.width / bufferLength) * 2.5;
+      let barHeight;
+      let x = 0;
+      let y = 0;
+
+      this.analyser.getByteFrequencyData(dataArray);
+
+      for (let i = 0; i < bufferLength; i++) {
+        barHeight = dataArray[i];
+        this.ctx.fillStyle = "#C7B0F7";
+        this.ctx.fillRect(
+          x + this.canvas.width / 2,
+          this.canvas.height - barHeight,
+          barWidth,
+          barHeight
+        );
+        this.ctx.fillRect(
+          this.canvas.width / 2 - x,
+          this.canvas.height - barHeight,
+          barWidth,
+          barHeight
+        );
+        x += barWidth + 1;
+      }
+    },
+  },
   mounted() {
-    const canvas = document.querySelector("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth * devicePixelRatio;
-    canvas.height = window.innerHeight * devicePixelRatio;
-    class point {
-      constructor(x, y, radius, color) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.color = color;
-        this.xSpeed = Math.random() - 0.5;
-        this.ySpeed = Math.random() - 0.5;
+    this.music = document.querySelector(".music");
+    this.music.muted = false;
+    this.canvas = document.querySelector("canvas");
+    this.music.addEventListener("play", () => {
+      if (!this.isInit) {
+        this.audCtx = new AudioContext();
+        this.source = this.audCtx.createMediaElementSource(this.music);
+        this.analyser = this.audCtx.createAnalyser();
+        this.source.connect(this.analyser);
+        this.analyser.connect(this.audCtx.destination);
+        this.analyser.fftSize = 2048;
+        this.isInit = true;
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
       }
-      draw() {
-        ctx.beginPath();
-        this.x += this.xSpeed;
-        this.y += this.ySpeed;
-
-        if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
-          this.xSpeed = -this.xSpeed;
-        }
-        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
-          this.ySpeed = -this.ySpeed;
-        }
-
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-        ctx.closePath();
-
-        for (let i = 0; i < points.length; i++) {
-          let distant = Math.sqrt(
-            Math.pow(this.x - points[i].x, 2) +
-              Math.pow(this.y - points[i].y, 2)
-          );
-          if (distant < 200) {
-            ctx.beginPath();
-            ctx.moveTo(this.x, this.y);
-            ctx.lineTo(points[i].x, points[i].y);
-            ctx.strokeStyle = this.color;
-            ctx.globalAlpha = 1 - distant / 200;
-            ctx.stroke();
-            ctx.globalAlpha = 1;
-            ctx.closePath();
-          }
-        }
-      }
-    }
-
-    const PointCount = 50;
-    const points = [];
-    for (let i = 0; i < PointCount; i++) {
-      points.push(
-        new point(
-          Math.random() * canvas.width,
-          Math.random() * canvas.height,
-          5,
-          "#a47aff"
-        )
-      );
-    }
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      points.forEach((point) => {
-        point.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    window.addEventListener("click", (e) => {
-      let x = e.clientX * devicePixelRatio;
-      let y = e.clientY * devicePixelRatio;
-      points.push(new point(x, y, 5, "#a47aff"));
-    });
-
-    window.addEventListener("resize", () => {
-      canvas.width = window.innerWidth * devicePixelRatio;
-      canvas.height = window.innerHeight * devicePixelRatio;
-    });
-
-    window.addEventListener("touchstart", (e) => {
-      let x = e.touches[0].clientX * devicePixelRatio;
-      let y = e.touches[0].clientY * devicePixelRatio;
-      points.push(new point(x, y, 5, "#a47aff"));
+      this.draw();
     });
   },
 };
@@ -111,7 +93,7 @@ export default {
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: #fffc;
+      background-color: #fff6;
       background-size: 200% 200%;
       z-index: -999;
     }

@@ -211,7 +211,10 @@ export default {
     flex-direction: column !important;
     &-left {
       margin: 0 !important;
-      width: 80% !important;
+      width: 90% !important;
+      &-image {
+        max-height: 200px;
+      }
     }
     &-right {
       &-title {

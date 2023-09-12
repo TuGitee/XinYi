@@ -1,7 +1,4 @@
 import axios from "axios"
-axios.defaults.baseURL = '/api'
-axios.defaults.headers.get['Content-Type'] = 'application/json;charset=utf-8'
-
 
 const state = {
     analysisList: [],
@@ -13,7 +10,7 @@ const mutations = {
 }
 const actions = {
     async getAnalysisList({ commit }) {
-        const { data } = await axios.get('/analysis.json')
+        const { data } = await axios.get('/data/analysis.json')
         commit('setAnalysisList', data)
     }
 }

@@ -7,7 +7,7 @@
         <div class="psychology-item-header-info-time">{{ item.time }}</div>
       </div>
     </div>
-    <ul class="psychology-item-content" v-html="msg"></ul>
+    <div class="psychology-item-content" v-html="msg"></div>
     <div class="psychology-item-footer">
       <img
         :src="require(`@/assets/image/illness/illness_${fileNumber}.png`)"
@@ -35,7 +35,7 @@ export default {
     msg() {
       return this.item.psychology
         .map((item) => {
-          return `<li class="psychology-item-content-item">${item}</li>`;
+          return `<p class="psychology-item-content-item">${item}</p><br/>`;
         })
         .join("");
     },

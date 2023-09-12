@@ -26,7 +26,10 @@ export default new VueRouter({
     routes,
     linkActiveClass: 'active',
     scrollBehavior(to, from, savedPosition) {
-        return { y: 0 }
+        return { 
+            y: 0,
+            x: 0
+        }
     }
 })
 

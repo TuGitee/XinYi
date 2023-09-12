@@ -11,7 +11,7 @@
       autoplay
     ></audio>
     <NavBar class="nav" v-if="$route.meta.isNavShow" />
-    <router-view class="main" :key="$route.path" />
+    <keep-alive> <router-view class="main" :key="$route.path" /></keep-alive>
   </div>
 </template>
 
@@ -31,6 +31,7 @@ export default {
   methods: {
     async getIllnessList() {
       await this.$store.dispatch("getIllnessList");
+      await this.$store.dispatch("getCategoryDetail");
     },
   },
 };
@@ -73,31 +74,28 @@ export default {
 
   .main {
     position: relative;
-    padding-left: constant(safe-area-inset-left);
-    padding-left: env(safe-area-inset-left);
-    padding-right: constant(safe-area-inset-right);
-    padding-right: env(safe-area-inset-right);
     width: 90%;
-    @media screen and (min-width: 948px) {
+    @media screen and (min-width: 731.56px) {
       top: calc(60px + constant(safe-area-inset-top));
       top: calc(60px + env(safe-area-inset-top));
     }
-    @media screen and (max-width: 946.4px) {
+    @media screen and (max-width: 731.56px) {
       top: calc(120px + constant(safe-area-inset-top));
       top: calc(120px + env(safe-area-inset-top));
     }
-    @media screen and (max-width: 663.2px) {
+    @media screen and (max-width: 511.11px) {
       top: calc(180px + constant(safe-area-inset-top));
       top: calc(180px + env(safe-area-inset-top));
     }
-    @media screen and (max-width: 355.2px) {
+    @media screen and (max-width: 271.11px) {
       top: calc(240px + constant(safe-area-inset-top));
       top: calc(240px + env(safe-area-inset-top));
     }
 
-    padding: 20px constant(safe-area-inset-left) 20px
-      constant(safe-area-inset-right);
-    padding: 20px env(safe-area-inset-left) 20px env(safe-area-inset-right);
+    padding: 20px constant(safe-area-inset-left)
+      constant(safe-area-inset-bottom) constant(safe-area-inset-right);
+    padding: 20px env(safe-area-inset-left) env(safe-area-inset-bottom)
+      env(safe-area-inset-right);
   }
 
   ::-webkit-scrollbar {
@@ -115,7 +113,9 @@ export default {
     }
   }
 }
-
+body {
+  overflow: overlay;
+}
 #app {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Arial",
     "Microsoft YaHei", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
@@ -124,6 +124,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: @font-color;
+
   .nav {
     user-select: none;
     .active:is(.nav-bar-right-item a):not(.nav-bar-right-item:last-child a) {

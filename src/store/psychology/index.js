@@ -1,6 +1,4 @@
 import axios from "axios"
-axios.defaults.baseURL = '/api'
-axios.defaults.headers.get['Content-Type'] = 'application/json;charset=utf-8'
 
 const state = {
     psychologyList: [],
@@ -12,7 +10,7 @@ const mutations = {
 }
 const actions = {
     async getPsychologyList({ commit }) {
-        const { data } = await axios.get('/psychology.json')
+        const { data } = await axios.get('/data/psychology.json')
         commit('setPsychologyList', data)
     }
 }

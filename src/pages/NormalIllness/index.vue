@@ -13,7 +13,7 @@
 
 <script>
 import IllnessRouter from "@/components/IllnessRouter";
-import { mapGetters } from "vuex";
+import { mapGetters} from "vuex";
 export default {
   name: "NormalIllness",
   data() {
@@ -27,9 +27,13 @@ export default {
       categoryDetail: "categoryDetail",
     }),
   },
-  mounted() {
-    const keys = Object.keys(this.$store.state.illness.categoryDetail);
-    keys.length === 0 && this.$store.dispatch("getCategoryDetail");
+  methods: {
+    async getCategoryDetail() {
+      await this.$store.dispatch("getCategoryDetail");
+    },
+  },
+  created() {
+    this.getCategoryDetail();
   },
 };
 </script>

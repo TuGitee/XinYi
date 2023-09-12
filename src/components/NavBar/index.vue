@@ -2,10 +2,9 @@
   <div class="nav-bar">
     <div class="nav-bar-left">
       <div class="nav-bar-left-logo">
-        <img src="../../assets/logo.png" alt="logo" />
-      </div>
-      <div class="nav-bar-left-title">
-        <router-link class="nav-bar-left-title-home" to="/">心翼</router-link>
+        <router-link class="nav-bar-left-title-home" to="/"
+          ><img src="@/assets/logo.png" alt="logo"
+        /></router-link>
       </div>
       <div class="nav-bar-left-music">
         <img
@@ -38,7 +37,7 @@ export default {
   name: "NavBar",
   data() {
     return {
-      NavRoutes,
+      NavRoutes: NavRoutes.filter((item) => item.meta.title),
       isMusicActive: false,
       isCardShow: false,
       timer: null,
@@ -72,23 +71,6 @@ export default {
   mounted() {
     let count = 0;
     let timer = null;
-    document
-      .querySelector("a[href*='about-us']")
-      .addEventListener("click", () => {
-        count++;
-        if (count === 5) {
-          this.isCardShow = true;
-          count = 0;
-          this.timer = setTimeout(()=>{
-            this.isCardShow = false;
-            this.$router.push({ name: "Login" });
-          }, 3000)
-        }
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-          count = 0;
-        }, 500);
-      });
 
     const music = document.querySelector(".music");
     if (music.paused) {
@@ -158,7 +140,8 @@ export default {
     &-logo {
       width: 40px;
       height: 40px;
-      margin-left: 20px;
+      margin: 0 20px;
+      filter: drop-shadow(0 0 10px @white);
       img {
         width: 100%;
         height: 100%;

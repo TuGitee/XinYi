@@ -1,5 +1,5 @@
 <template>
-  <div class="illness-detail">
+  <div class="illness-detail" ref="scroll">
     <button class="illness-detail-back" @click="goBack">返回</button>
     <button class="illness-detail-bottom bottom" @click="goBottom">
       点击达到底部
@@ -63,11 +63,14 @@ export default {
     },
     goBottom() {
       window.scrollTo({
-        top: document.body.offsetHeight,
+        top: this.$refs.scroll.offsetHeight,
         behavior: "smooth",
       });
     },
-    getItem() {
+    async getItem() {
+      if (this.illnessList.length === 0)
+        await this.$store.dispatch("getIllnessList");
+
       const index = this.illnessList.findIndex(
         (item) => item.id === this.$route.params.illnessId
       );
@@ -116,7 +119,7 @@ export default {
       isShow: true,
     };
   },
-  created() {},
+
   mounted() {
     this.getItem();
   },
@@ -137,7 +140,6 @@ export default {
   padding: 20px;
   position: relative;
   top: 0;
-  min-width: min-content;
   width: 80%;
   margin: auto;
   &-title {

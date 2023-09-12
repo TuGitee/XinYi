@@ -1,6 +1,4 @@
-import axios from 'axios'
-axios.defaults.baseURL = '/api'
-axios.defaults.headers.get['Content-Type'] = 'application/json;charset=utf-8'
+import axios from "axios"
 
 const state = {
     illnessList: [],
@@ -23,11 +21,11 @@ const mutations = {
 }
 const actions = {
     async getIllnessList({ commit }) {
-        const { data } = await axios.get('/illness.json')
+        const { data } = await axios.get('/data/illness.json')
         commit('setIllnessList', data)
     },
     async getCategoryDetail({ commit }) {
-        const { data } = await axios.get('/category.json')
+        const { data } = await axios.get('/data/category.json')
         commit('setCategoryDetail', data)
     }
 }

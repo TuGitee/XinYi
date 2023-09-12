@@ -15,18 +15,9 @@ export default [
         path: '/',
         component: () => import('@/pages/StartPage'),
         meta: {
-            title: '首页'
+            title: '首页',
+            isNavShow: true,
         }
-    },
-    {
-        name: 'Login',
-        path: '/login',
-        component: () => import('@/pages/Login'),
-    },
-    {
-        name: 'BackEnd',
-        path: '/backend',
-        component: () => import('@/pages/BackEnd'),
     },
     {
         path: '/*',
