@@ -11,6 +11,7 @@
     "@babel/preset-env": "^7.21.4",
     "@jiaminghi/data-view": "^2.10.0",
     "axios": "^1.2.6",
+    "compression-webpack-plugin": "^10.0.0",
     "core-js": "^3.8.3",
     "echarts": "^5.4.2",
     "echarts-gl": "^2.0.9",
