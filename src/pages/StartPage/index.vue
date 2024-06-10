@@ -128,6 +128,8 @@ export default {
       position: relative;
       & > img {
         height: 100%;
+        max-height: 90vh;
+        max-width: 100%;
       }
       &-link {
         position: absolute;
