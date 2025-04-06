@@ -53,6 +53,17 @@ export default [
         }
     },
     {
+        name: 'AboutUs',
+        path: '/about-us',
+        component: () => import('@/pages/AboutUs'),
+        meta: {
+            title: '关于我们',
+            isNavShow: true,
+            top: 10,
+            left: 89
+        }
+    },
+    {
         name: 'FunctionIntroduction',
         path: '/function-introduction',
         component: () => import('@/pages/FunctionIntroduction'),
